@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checking / linting caches
+.mypy_cache/
+.ruff_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets — yes, even here, especially here. These intentionally mirror
+# the patterns commitsentinel/scanners/sensitive_files.py itself watches
+# for, so this repo never becomes its own counterexample.
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.keystore
+*.jks
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+credentials.json
+firebase-adminsdk*.json
+.npmrc
+.netrc
+.pgpass
