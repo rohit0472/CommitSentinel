@@ -1,10 +1,3 @@
-"""Shared, scanner-agnostic helpers for walking a repo tree.
-
-This is plumbing, not scanner logic — importing it doesn't violate "scanners
-never know about each other," since no scanner imports another scanner here,
-they only share this filesystem helper.
-"""
-
 from __future__ import annotations
 
 import os
@@ -16,8 +9,7 @@ IGNORED_DIRS = {
     ".next", ".cache", "target", ".idea", ".vscode",
 }
 
-# Extensions we don't bother reading as text — binary content produces
-# either decode errors (harmless) or garbage entropy noise (not harmless).
+
 BINARY_EXTENSIONS = {
     ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico", ".webp",
     ".pdf", ".zip", ".tar", ".gz", ".tgz", ".7z", ".rar",
@@ -28,7 +20,7 @@ BINARY_EXTENSIONS = {
     ".db", ".sqlite", ".sqlite3",
 }
 
-MAX_FILE_SIZE = 2 * 1024 * 1024  # 2 MB — not worth scanning line-by-line beyond this
+MAX_FILE_SIZE = 2 * 1024 * 1024 
 
 
 def iter_files(repo_path: Path):

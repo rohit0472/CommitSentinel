@@ -1,15 +1,3 @@
-"""The Scanner interface. Every scanner in commitsentinel/scanners/ implements
-this and nothing else — they never know about each other, and cli.py
-just loops over a flat list of them:
-
-    findings = []
-    for scanner in scanners:
-        findings.extend(scanner.scan(repo_path))
-
-Adding a new scanner later means: new module + one line registering it
-in cli.py. Nothing else in the codebase changes.
-"""
-
 from __future__ import annotations
 
 from abc import ABC, abstractmethod

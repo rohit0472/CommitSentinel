@@ -14,8 +14,6 @@ def test_detects_aws_access_key(tmp_path):
     assert f.severity.value == "critical"
     assert f.line == 1
     assert f.asset == "config.py"
-    # The middle of the key (the actually-sensitive part) must not survive
-    # into the report; the AKIA prefix is a public format marker, not secret.
     assert secret not in f.metadata["preview"]
     assert "*" in f.metadata["preview"]
 

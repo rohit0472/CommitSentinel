@@ -1,12 +1,3 @@
-"""Shared regex patterns for the secret scanner. Each SecretRule pairs a
-pattern with the metadata a Finding needs, so secrets.py stays a thin
-loop over this list — adding a new credential format means adding one
-entry here, not touching the scanner logic.
-
-Also home to the Shannon-entropy helpers used for catching unrecognized
-high-entropy strings (tokens that don't match any known format above).
-"""
-
 from __future__ import annotations
 
 import math
@@ -90,8 +81,7 @@ SECRET_RULES: list[SecretRule] = [
     ),
 ]
 
-# Generic-assignment matches against these values are skipped — they're
-# obviously placeholders, not real secrets, and flagging them is just noise.
+
 PLACEHOLDER_VALUES = {
     "changeme", "change_me", "your_api_key", "your-api-key", "xxxxxxxx",
     "placeholder", "example", "dummy", "test", "fake", "redacted",
@@ -99,11 +89,11 @@ PLACEHOLDER_VALUES = {
     "password", "secret", "string", "none", "null", "undefined",
 }
 
-# --- Entropy-based detection for tokens that don't match a known format ---
+
 
 ENTROPY_TOKEN_RE = re.compile(r"[A-Za-z0-9+/_=-]{20,100}")
 ENTROPY_THRESHOLD = 4.3
-_HEX_HASH_LENGTHS = {32, 40, 64}  # md5/sha1/sha256 — common non-secret hex ids
+_HEX_HASH_LENGTHS = {32, 40, 64}  
 _UUID_RE = re.compile(
     r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
 )

@@ -1,21 +1,3 @@
-"""AI explanation — Finding -> prompt -> explanation -> recommendation.
-
-Runs *after* findings exist, as a single batched call over all of them —
-never inside a scanner (section 4.6 of the build plan). This keeps the
-feature entirely optional: every scanner works whether or not this
-module, or the `anthropic` package, is installed at all.
-
-Requires the `anthropic` package (`pip install "commitsentinel[ai]"`) and
-an ANTHROPIC_API_KEY environment variable. Neither is needed for a plain
-`scan` without `--explain`.
-
-Only non-sensitive, structural fields (title/severity/category/asset/
-line/rule/description) are sent to the model — never `finding.metadata`,
-which is where redacted secret previews live. A tool that scans for
-leaked secrets should not be the thing that sends secret material
-off-host.
-"""
-
 from __future__ import annotations
 
 import json

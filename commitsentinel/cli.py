@@ -1,14 +1,3 @@
-"""typer entrypoint. Wires scanners together — this file owns the loop,
-nothing else does.
-
-    findings = []
-    for scanner in scanners:
-        findings.extend(scanner.scan(repo_path))
-
-Registering a new scanner is exactly one line in SCANNERS below.
-Nothing else in the codebase changes.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path

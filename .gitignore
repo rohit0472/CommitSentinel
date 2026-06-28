@@ -26,9 +26,7 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Secrets — yes, even here, especially here. These intentionally mirror
-# the patterns commitsentinel/scanners/sensitive_files.py itself watches
-# for, so this repo never becomes its own counterexample.
+# Secrets 
 .env
 .env.*
 !.env.example

@@ -1,8 +1,3 @@
-"""Secret scanner — regex rules for known credential formats, plus
-Shannon-entropy detection for high-entropy strings that don't match a
-known format. See section 4.1 of the build plan.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -19,8 +14,7 @@ from commitsentinel.scanners.rules import (
     shannon_entropy,
 )
 
-# Files where high-entropy strings are expected and not worth flagging —
-# lockfiles and minified bundles are full of them by design.
+
 _SKIP_ENTROPY_NAMES = {
     "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "poetry.lock",
     "Pipfile.lock", "Cargo.lock", "composer.lock",
@@ -89,7 +83,7 @@ class SecretScanner(Scanner):
                     token = token_match.group(0)
                     span = range(token_match.start(), token_match.end())
                     if matched_chars.intersection(span):
-                        continue  # already caught by a known-format rule above
+                        continue 
                     if not looks_like_secret_candidate(token):
                         continue
                     entropy = shannon_entropy(token)

@@ -1,12 +1,3 @@
-"""Merge-conflict-marker scanner — flags unresolved `<<<<<<<` / `=======` /
-`>>>>>>>` markers left in committed code. See section 4.2 of the build plan.
-
-A bare `=======` is only flagged when it falls between an unmatched
-`<<<<<<<` and the next `>>>>>>>` in the same file — that's what stops a
-Markdown Setext heading underline (`Title\\n=======`) from being mistaken
-for a conflict marker.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path

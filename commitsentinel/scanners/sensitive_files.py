@@ -1,16 +1,3 @@
-"""Sensitive file scanner — one module covering both "is this staged right
-now" and "is this already tracked / missing from .gitignore" for files
-like `.env`, `.pem`, `id_rsa`, `credentials.json`,
-`firebase-adminsdk*.json`, `.p12`, etc. See section 4.3 of the build plan.
-
-Severity depends on how exposed the file already is:
-  - tracked in git history  -> CRITICAL (it's already committed)
-  - staged for commit       -> HIGH (about to be committed)
-  - present, not gitignored -> MEDIUM (one `git add .` away)
-  - present, gitignored     -> no finding (working as intended)
-  - not a git repo at all   -> MEDIUM, generic (can't check tracking/ignore status)
-"""
-
 from __future__ import annotations
 
 import fnmatch

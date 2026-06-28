@@ -1,6 +1,3 @@
-"""Console report. Color-coded by severity using rich, which is already
-pulled in transitively via typer — no extra dependency for this.
-"""
 
 from __future__ import annotations
 

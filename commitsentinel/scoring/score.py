@@ -5,8 +5,6 @@
 
     security_score = max(0, 100 - risk)
 
-Deliberately simple. The curve can change later once real scan data
-shows whether it under- or over-penalizes — don't gold-plate this now.
 """
 
 from __future__ import annotations
